@@ -1,0 +1,66 @@
+<% layout("/layouts/boilerplate")%>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Cosmic Glow Effect -->
+            <div class="position-absolute top-0 start-0 w-100 h-100"
+                style="background: radial-gradient(circle at 50% -20%, rgba(0, 198, 255, 0.15), transparent 70%); pointer-events: none;">
+            </div>
+
+            <div class="text-center mb-5 position-relative">
+                <div class="ai-avatar mb-3 mx-auto" style="width: 60px; height: 60px; font-size: 1.8rem;">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <h2 class="fw-bold text-light mb-1" style="font-family: var(--font-heading);">New User Signup</h2>
+                <p class="text-muted small">Join our exclusive community today.</p>
+            </div>
+
+            <form action="/signup" method="POST" novalidate class="needs-validation position-relative">
+                <div class="mb-4">
+                    <label for="username" class="form-label small text-secondary">USERNAME</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-end-0 border-secondary text-secondary"><i
+                                class="fa-solid fa-user"></i></span>
+                        <input name="username" id="username" type="text" class="form-control border-start-0 ps-0"
+                            required placeholder="Choose a username"
+                            style="background: rgba(255,255,255,0.05) !important; border-color: rgba(255,255,255,0.1) !important;" />
+                        <div class="valid-feedback">Username looks good!</div>
+                        <div class="invalid-feedback">Please choose a username.</div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="form-label small text-secondary">EMAIL ADDRESS</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-end-0 border-secondary text-secondary"><i
+                                class="fa-solid fa-envelope"></i></span>
+                        <input name="email" id="email" type="email" class="form-control border-start-0 ps-0" required
+                            placeholder="name@example.com"
+                            style="background: rgba(255,255,255,0.05) !important; border-color: rgba(255,255,255,0.1) !important;" />
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <label for="password" class="form-label small text-secondary">PASSWORD</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-end-0 border-secondary text-secondary"><i
+                                class="fa-solid fa-lock"></i></span>
+                        <input name="password" id="password" type="password" class="form-control border-start-0 ps-0"
+                            required placeholder="Create a password"
+                            style="background: rgba(255,255,255,0.05) !important; border-color: rgba(255,255,255,0.1) !important;" />
+                        <div class="invalid-feedback">Please create a password.</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary w-100 py-3 mb-3 fw-bold shadow-lg"
+                    style="letter-spacing: 1px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border: none;">SIGN
+                    UP</button>
+
+                <div class="text-center">
+                    <p class="small text-secondary mb-0">Already a member? <a href="/login"
+                            class="text-white text-decoration-none fw-bold">Log In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>

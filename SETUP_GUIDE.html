@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Bidding Platform - Setup Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .status {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .status h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .checklist li {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist li:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .checklist li::before {
+            content: "☐ ";
+            color: #667eea;
+            font-size: 1.3em;
+            margin-right: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+        }
+        
+        .buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .info-box strong {
+            color: #1976d2;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .warning-box strong {
+            color: #ff6f00;
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Art Bidding Platform</h1>
+        <p class="subtitle">Your Complete Art Marketplace Solution</p>
+        
+        <div class="status">
+            <h2>📋 Quick Setup Checklist</h2>
+            <ul class="checklist">
+                <li>Install MongoDB (local or use MongoDB Atlas cloud)</li>
+                <li>Sign up for Cloudinary and get API credentials</li>
+                <li>Update <code>.env</code> file with your credentials</li>
+                <li>Run <code>START_SERVER.bat</code> or <code>npm start</code></li>
+                <li>Open browser to <code>http://localhost:8000</code></li>
+            </ul>
+        </div>
+        
+        <div class="info-box">
+            <strong>📍 Server Address:</strong> Once running, visit 
+            <code>http://localhost:8000/listings</code>
+        </div>
+        
+        <div class="warning-box">
+            <strong>⚠️ Important:</strong> Make sure MongoDB is running before starting the server!
+        </div>
+        
+        <h2 style="margin-top: 30px; color: #333;">✨ Features</h2>
+        <div class="feature-grid">
+            <div class="feature">
+                <div class="feature-icon">🔐</div>
+                <strong>User Auth</strong>
+                <p>Secure login & signup</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🖼️</div>
+                <strong>Art Listings</strong>
+                <p>Create & manage listings</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">☁️</div>
+                <strong>Cloud Storage</strong>
+                <p>Cloudinary integration</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⭐</div>
+                <strong>Reviews</strong>
+                <p>Rate & review artworks</p>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <a href="http://localhost:8000/listings" class="btn" target="_blank">
+                🚀 Launch Website
+            </a>
+            <a href="SETUP_CHECKLIST.md" class="btn btn-secondary">
+                📖 Setup Guide
+            </a>
+        </div>
+        
+        <div class="info-box" style="margin-top: 30px;">
+            <strong>📚 Documentation Files:</strong><br>
+            • <code>QUICKSTART.md</code> - Quick start guide<br>
+            • <code>SETUP_CHECKLIST.md</code> - Detailed setup steps<br>
+            • <code>PROJECT_ANALYSIS.md</code> - Complete project overview<br>
+            • <code>README.md</code> - Full documentation
+        </div>
+    </div>
+    
+    <script>
+        // Check if server is running
+        fetch('http://localhost:8000')
+            .then(response => {
+                if (response.ok) {
+                    document.querySelector('.warning-box').innerHTML = 
+                        '<strong>✅ Server is Running!</strong> Your website is ready at <code>http://localhost:8000</code>';
+                    document.querySelector('.warning-box').style.background = '#d4edda';
+                    document.querySelector('.warning-box').style.borderColor = '#28a745';
+                }
+            })
+            .catch(() => {
+                console.log('Server not running yet');
+            });
+    </script>
+</body>
+</html>

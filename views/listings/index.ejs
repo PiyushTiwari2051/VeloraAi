@@ -1,0 +1,150 @@
+<% layout("/layouts/boilerplate")%>
+
+    <!-- AI Hero Section -->
+    <div class="hero-section">
+        <div class="ai-chat-container">
+            <div class="ai-avatar">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+            <h2 class="mb-3">Hello, I'm Velora.</h2>
+            <p class="text-muted" id="ai-status">Your personal AI travel concierge. Where do you dream of going?</p>
+
+            <div id="chat-history" class="text-start mb-3" style="max-height: 200px; overflow-y: auto;">
+                <!-- Chat messages appear here -->
+            </div>
+
+            <div class="chat-input-group">
+                <input type="text" id="ai-input" class="chat-input"
+                    placeholder="e.g., 'Modern apartment in New York' or 'Beach villa'...">
+                <button class="chat-btn" onclick="askVelora()">
+                    <i class="fa-solid fa-paper-plane"></i> Ask
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Bar -->
+    <div class="container mb-4">
+        <div class="category-bar">
+            <div class="category-item" onclick="filterCategory('All')">
+                <i class="fa-solid fa-globe"></i>
+                <p>All Stays</p>
+            </div>
+            <div class="category-item" onclick="filterCategory('Modern')">
+                <i class="fa-solid fa-city"></i>
+                <p>Modern</p>
+            </div>
+            <div class="category-item" onclick="filterCategory('Nature')">
+                <i class="fa-solid fa-tree"></i>
+                <p>Nature</p>
+            </div>
+            <div class="category-item" onclick="filterCategory('Luxury')">
+                <i class="fa-solid fa-gem"></i>
+                <p>Luxury</p>
+            </div>
+            <div class="category-item" onclick="filterCategory('Beach')">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <p>Beach</p>
+            </div>
+            <div class="category-item" onclick="filterCategory('Domes')">
+                <i class="fa-solid fa-rocket"></i>
+                <p>Futuristic</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Listings Grid -->
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3" id="listings-grid">
+        <%for(let listing of allListings){%>
+            <a href="/listings/<%=listing._id%>" class="listing-link">
+                <div class="card col listing-card" data-title="<%=listing.title.toLowerCase()%>"
+                    data-location="<%=listing.location.toLowerCase()%>"
+                    data-country="<%=listing.country.toLowerCase()%>">
+                    <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;" />
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>
+                                <%=listing.title%>
+                            </b> <br />
+                            <span class="text-muted">
+                                <%=listing.location%>, <%=listing.country%>
+                            </span><br>
+                            &#8377; <%=listing.price.toLocaleString("en-IN")%> / night
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <%}%>
+    </div>
+
+    <script>
+        function askVelora() {
+            const inputRaw = document.getElementById('ai-input').value;
+            const input = inputRaw.toLowerCase();
+            const chatHistory = document.getElementById('chat-history');
+            const status = document.getElementById('ai-status');
+
+            if (!input) return;
+
+            // User Message
+            // chatHistory.innerHTML += `<div class="mb-2 text-end"><span class="badge bg-primary p-2">${inputRaw}</span></div>`;
+
+            // AI "Thinking"
+            status.innerHTML = "<i class='fa-solid fa-circle-notch fa-spin'></i> Velora is thinking...";
+
+            setTimeout(() => {
+                // Filter Logic
+                const cards = document.querySelectorAll('.listing-card');
+                let count = 0;
+
+                cards.forEach(card => {
+                    const title = card.getAttribute('data-title');
+                    const loc = card.getAttribute('data-location');
+                    const country = card.getAttribute('data-country');
+                    const parentLink = card.closest('.listing-link');
+
+                    if (title.includes(input) || loc.includes(input) || country.includes(input)) {
+                        parentLink.style.display = 'block';
+                        count++;
+                    } else {
+                        parentLink.style.display = 'none';
+                    }
+                });
+
+                // AI Response
+                let responseMsg = count > 0
+                    ? `I found ${count} perfect matches for "${inputRaw}".`
+                    : `No direct matches for "${inputRaw}", showing all options.`;
+
+                if (count === 0) {
+                    cards.forEach(c => c.closest('.listing-link').style.display = 'block');
+                }
+
+                // chatHistory.innerHTML += `<div class="mb-2 text-start"><span class="badge bg-success p-2"><i class="fa-solid fa-robot"></i> ${responseMsg}</span></div>`;
+                status.innerText = responseMsg;
+
+                // Scroll to grid
+                document.getElementById('listings-grid').scrollIntoView({ behavior: 'smooth' });
+
+                // Clear input
+                // document.getElementById('ai-input').value = '';
+            }, 800);
+        }
+
+        function filterCategory(cat) {
+            if (cat === 'All') {
+                document.querySelectorAll('.listing-link').forEach(c => c.style.display = 'block');
+                document.getElementById('ai-status').innerText = "Exploring entire universe.";
+                return;
+            }
+            document.getElementById('ai-input').value = cat;
+            askVelora();
+        }
+
+        // Allow pressing Enter to search
+        document.getElementById('ai-input').addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                askVelora();
+            }
+        });
+    </script>

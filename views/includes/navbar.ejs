@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md sticky-top">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-robot me-2"></i> VELORA AI</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <!-- Left: Navigation Links -->
+      <div class="navbar-nav me-auto mb-2 mb-lg-0">
+        <a class="nav-link" href="/listings">Destinations</a>
+        <a class="nav-link" href="#"
+          onclick="document.querySelector('.hero-section').scrollIntoView({behavior: 'smooth'})">AI Concierge</a>
+      </div>
+
+      <!-- Center: Search Bar -->
+      <form class="d-flex mx-auto position-relative mb-2 mb-lg-0" role="search" action="/listings" method="GET"
+        style="width: 100%; max-width: 450px;">
+        <input class="form-control rounded-pill ps-5 w-100" type="search" name="q" placeholder="Search destinations..."
+          aria-label="Search"
+          style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.15); height: 45px;">
+        <i class="fa-solid fa-magnifying-glass position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"
+          style="font-size: 1.1rem;"></i>
+      </form>
+
+      <!-- Right: Actions & Auth -->
+      <div class="navbar-nav ms-auto align-items-center gap-3">
+        <a class="nav-link btn btn-sm text-white px-4 fw-bold rounded-pill host-nav-btn" href="/listings/new"
+          style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);">Host a Space</a>
+
+        <% if(!currUser){%>
+          <a class="nav-link fw-bold" href="/signup">Sign Up</a>
+          <a class="nav-link btn btn-outline-light rounded-pill px-4" href="/login">Log In</a>
+          <%}%>
+            <% if(currUser){%>
+              <a class="nav-link btn btn-outline-danger rounded-pill px-4" href="/logout">Log Out</a>
+              <%}%>
+      </div>
+    </div>
+  </div>
+</nav>

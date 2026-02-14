@@ -1,0 +1,93 @@
+<% layout("/layouts/boilerplate")%>
+
+     <div class="host-container d-flex align-items-center justify-content-center">
+          <div class="container">
+               <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                         <div class="host-card">
+                              <div class="host-header">
+                                   <h2 class="fw-bold mb-1" style="font-family: var(--font-heading);">
+                                        <i class="fa-solid fa-pen-to-square me-2 text-warning"></i> Refine Listing
+                                   </h2>
+                                   <p class="text-white-50 mb-0 small">Update your property details on the Velora
+                                        network.</p>
+                              </div>
+
+                              <div class="p-5">
+                                   <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" novalidate
+                                        class="needs-validation" enctype="multipart/form-data">
+
+                                        <div class="row g-4 mb-4">
+                                             <div class="col-12">
+                                                  <label for="title" class="host-label">Property Title</label>
+                                                  <input name="listing[title]" value="<%=listing.title%>" type="text"
+                                                       class="form-control host-input" required />
+                                                  <div class="valid-feedback">Looks great!</div>
+                                             </div>
+
+                                             <div class="col-12">
+                                                  <label for="description" class="host-label">Experience
+                                                       Description</label>
+                                                  <textarea name="listing[description]" class="form-control host-input"
+                                                       rows="4" required><%=listing.description%></textarea>
+                                             </div>
+
+                                             <div class="col-12">
+                                                  <label class="host-label">Current Visual Asset</label>
+                                                  <div class="mb-3">
+                                                       <img src="<%=originalImageUrl%>"
+                                                            class="img-fluid rounded-4 border border-secondary"
+                                                            style="max-height: 200px; width: 100%; object-fit: cover;" />
+                                                  </div>
+                                             </div>
+
+                                             <div class="col-12">
+                                                  <label for="image" class="host-label">Upload New Asset
+                                                       (Optional)</label>
+                                                  <div class="input-group">
+                                                       <input name="listing[image]" type="file"
+                                                            class="form-control host-input" />
+                                                       <label class="input-group-text bg-light border-0"><i
+                                                                 class="fa-solid fa-cloud-arrow-up text-secondary"></i></label>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                        <div class="row g-4 mb-5">
+                                             <div class="col-md-4">
+                                                  <label for="price" class="host-label">Nightly Rate</label>
+                                                  <div class="input-group">
+                                                       <span
+                                                            class="input-group-text host-input border-end-0 bg-transparent text-secondary fw-bold">&#8377;</span>
+                                                       <input name="listing[price]" value="<%=listing.price%>"
+                                                            type="number"
+                                                            class="form-control host-input border-start-0 ps-0"
+                                                            required />
+                                                  </div>
+                                             </div>
+
+                                             <div class="col-md-8">
+                                                  <label for="country" class="host-label">Country / Region</label>
+                                                  <input name="listing[country]" value="<%=listing.country%>"
+                                                       type="text" class="form-control host-input" required />
+                                             </div>
+
+                                             <div class="col-12">
+                                                  <label for="location" class="host-label">Specific Location</label>
+                                                  <input name="listing[location]" value="<%=listing.location%>"
+                                                       type="text" class="form-control host-input" required />
+                                             </div>
+                                        </div>
+
+                                        <button class="btn host-btn"
+                                             style="background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%); box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.5);">
+                                             <i class="fa-solid fa-check-circle me-2"></i> Update Configuration
+                                        </button>
+
+                                   </form>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>

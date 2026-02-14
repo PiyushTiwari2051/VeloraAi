@@ -1,0 +1,88 @@
+<% layout("/layouts/boilerplate")%>
+
+    <div class="host-container d-flex align-items-center justify-content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="host-card">
+                        <div class="host-header">
+                            <h2 class="fw-bold mb-1" style="font-family: var(--font-heading);">
+                                <i class="fa-solid fa-hotel me-2 text-warning"></i> Host a Premier Space
+                            </h2>
+                            <p class="text-white-50 mb-0 small">Curate your listing for the Velora network.</p>
+                        </div>
+
+                        <div class="p-5">
+                            <form method="POST" action="/listings" novalidate class="needs-validation"
+                                enctype="multipart/form-data">
+
+                                <div class="row g-4 mb-4">
+                                    <div class="col-12">
+                                        <label for="title" class="host-label">Property Title</label>
+                                        <input name="listing[title]" id="title"
+                                            placeholder="e.g., 'The Obsidian Penthouse'" type="text"
+                                            class="form-control host-input" required />
+                                        <div class="valid-feedback">Captivating title!</div>
+                                        <div class="invalid-feedback">Please enter a property title.</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="description" class="host-label">Experience Description</label>
+                                        <textarea name="listing[description]" id="description"
+                                            placeholder="Detail the unique features and ambiance..."
+                                            class="form-control host-input" rows="4" required></textarea>
+                                        <div class="invalid-feedback">Please provide a description.</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="image" class="host-label">Visual Asset (Upload)</label>
+                                        <div class="input-group">
+                                            <input name="listing[image]" id="image" type="file"
+                                                class="form-control host-input" required />
+                                            <label class="input-group-text bg-light border-0" for="image"><i
+                                                    class="fa-solid fa-cloud-arrow-up text-secondary"></i></label>
+                                            <div class="invalid-feedback">Please upload an image.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-4 mb-5">
+                                    <div class="col-md-4">
+                                        <label for="price" class="host-label">Nightly Rate</label>
+                                        <div class="input-group">
+                                            <span
+                                                class="input-group-text host-input border-end-0 bg-transparent text-secondary fw-bold">&#8377;</span>
+                                            <input name="listing[price]" id="price" placeholder="5000" type="number"
+                                                class="form-control host-input border-start-0 ps-0" required />
+                                            <div class="invalid-feedback">Please set a valid price.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <label for="country" class="host-label">Country / Region</label>
+                                        <input name="listing[country]" id="country" placeholder="e.g., Switzerland"
+                                            type="text" class="form-control host-input" required />
+                                        <div class="invalid-feedback">Please enter the country.</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="location" class="host-label">Specific Location</label>
+                                        <input name="listing[location]" id="location"
+                                            placeholder="e.g., Zermatt, Valais" type="text"
+                                            class="form-control host-input" required />
+                                        <div class="invalid-feedback">Please provide a specific location.</div>
+                                    </div>
+                                </div>
+
+                                <button class="btn host-btn">
+                                    <i class="fa-solid fa-paper-plane me-2"></i> Launch Listing
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

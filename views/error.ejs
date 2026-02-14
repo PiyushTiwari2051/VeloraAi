@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate")%>
+
+    <div class="auth-container">
+        <div class="auth-card border-danger">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold text-danger"><i class="fa-solid fa-triangle-exclamation"></i> System Anomaly</h2>
+                <p class="text-muted">Velora encountered an unexpected parameter.</p>
+            </div>
+
+            <div class="alert alert-danger bg-transparent border-0 text-light">
+                <h5 class="alert-heading fw-bold">
+                    <%=err.message%>
+                </h5>
+                <% if(process.env.NODE_ENV !=="production" ) { %>
+                    <hr>
+                    <p class="small text-muted" style="max-height: 200px; overflow-y: auto;">
+                        <%=err.stack%>
+                    </p>
+                    <% } %>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="/listings" class="btn btn-primary">Return to Dashboard</a>
+            </div>
+        </div>
+    </div>
