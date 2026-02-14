@@ -43,7 +43,7 @@ npm start
 
 🌍 Deployment Ready
 
-Vercel • Render • Railway • AWS • DigitalOcean
+ 1. Render 2. netlify
 
 🎯 Vision
 
