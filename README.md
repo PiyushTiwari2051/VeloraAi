@@ -2,7 +2,7 @@
 
 <br/><br/>
 
-<a href="YOUR_LIVE_LINK"> <img src="https://img.shields.io/badge/Live%20Platform-Explore-6366F1?style=for-the-badge"/> </a> <a href="YOUR_GITHUB_LINK"> <img src="https://img.shields.io/badge/GitHub-Repository-111?style=for-the-badge"/> </a> </div>
+<a href="YOUR_LIVE_LINK"> <img src="https://img.shields.io/badge/Live%20Platform-Explore-6366F1?style=for-the-badge"/> </a> <a href="https://github.com/PiyushTiwari2051/VeloraAi"> <img src="https://img.shields.io/badge/GitHub-Repository-111?style=for-the-badge"/> </a> </div>
 ✨ About VeloraAI
 
 VeloraAI is an AI-powered travel automation platform that transforms how people explore the world.
