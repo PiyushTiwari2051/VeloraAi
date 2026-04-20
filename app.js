@@ -38,7 +38,7 @@ main()
 async function main() {
   await mongoose.connect(dbUrl);
 }
-app.set("views engine","ejs");
+app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
@@ -52,7 +52,7 @@ const store=MongoStore.create({
   },
   touchAfter:24*3600,
 });
-store.on("error",()=>{
+store.on("error",(err)=>{
   console.log("Error in MONGO SESSION STORE",err);
 });
 const sessionOptions={
@@ -100,6 +100,7 @@ app.use((err,req,res,next)=>{
 
    res.status(statusCode).render("error.ejs",{err});
 });
-app.listen(8000, () => {
-  console.log("Server is listening on port 8000");
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
